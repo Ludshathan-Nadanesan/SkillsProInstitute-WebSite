@@ -1,6 +1,6 @@
 # SkillPro Institute Web Site & dashboards Project
 
-**Project Name:** SkillPro Institute Web Site & Dashboards.
+**Project Name:** SkillPro Institute Web Site & Dashboards
 **Developer:** Ludshathan Nadanesan  
 **Tech Stack:** HTML, CSS, JavaScript, PHP, MySQL, PHPMailer, OpenRouter AI (free model)  
 **Project Type:** Full-stack Web Application with AI Chatbot Integration
