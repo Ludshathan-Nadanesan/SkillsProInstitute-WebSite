@@ -1,0 +1,320 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap'); */
+
+
+:root {
+    --font-family: "Inter", sans-serif;
+    /* --font-family: "Comfortaa", sans-serif; */
+    --logo-font: "Russo One", sans-serif;
+    --bg-color: #fafcff;
+    --Nav-Bar-1: hsl(210, 76%, 35%);
+    --nav-bar-1-hover: hsl(210, 76%, 27%);
+    --Nav-Bar-1-Grade: radial-gradient(circle,rgba(18, 76, 135, 1) 0%, rgba(0, 39, 74, 1) 100%);
+    --Nav-Bar-2: #ffffff;
+    --text-color: black;
+    --text-color-secondary: hsl(0, 0%, 30%);
+    --hover-color: #3fa1fe;
+    --search-bg: hsl(0, 0%, 98%);
+    --card-color: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    --card-hover: white;
+    --card-btn: hsl(0, 0%, 90%);
+    --section-color: hsl(0, 0%, 98%);
+    --inquiry-form-box: hsl(0, 0%, 100%);
+}
+
+/* Dark Theme Color Settings */
+body.dark {
+    --bg-color: hsl(0, 0%, 7%);
+    --text-color: white;
+    --text-color-secondary: hsl(0, 0%, 70%);
+    --Nav-Bar-2: hsl(0, 0%, 10%);
+    --card-color: linear-gradient(180deg,rgba(30, 30, 30, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --card-hover: linear-gradient(180deg,rgb(40, 40, 40, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --search-bg: hsl(0, 0%, 12%);
+    --card-btn: hsl(0, 0%, 20%);
+    --section-color: hsl(0, 0%, 12%);
+    --inquiry-form-box: hsl(0, 0%, 16%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+.login-container {
+    max-width: 1200px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+
+/* Text Content Design Start */
+.login-container .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.login-container .content .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.25rem;
+}
+
+.login-container .content .text-container .logo {
+    font-family: var(--logo-font);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--Nav-Bar-1);
+}
+
+.login-container .content .text-container .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.login-container .content .text-container h3{
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.login-container .content .text-container h2 .fa-quote-left {
+    color: var(--text-color-secondary);
+    font-size: 4rem;
+    text-align: left;
+}
+
+.login-container .content .text-container h2 .fa-quote-right {
+    color: var(--text-color-secondary);
+    font-size: 1.375rem;
+}
+
+.login-container .content .text-container p {
+    color: var(--text-color-secondary);
+    font-family: var(--font-family);
+    font-size: 1.125rem;
+}
+
+.login-container .three-lang {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 1rem;
+    width: 35%;
+}
+
+.login-container .three-lang a {
+    text-decoration: none;
+    color: var(--text-color-secondary);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    text-align: left;
+    flex:1;
+    transition: all 0.2s ease;
+}
+
+.login-container .three-lang a:hover {
+    text-decoration: underline;
+}
+
+.login-container .three-lang a.active {
+    color: var(--Nav-Bar-1);
+}
+
+
+
+/* Form Design Start */
+.login-container .login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+}
+
+.login-container .login-form #form {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.25rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    background: var(--Nav-Bar-2);
+    box-shadow: 0 2px 4px #0000001a, 0 8px 16px #0000001a;;
+}
+
+.login-container .login-form #form input {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border-radius: 8px;
+    border: solid 1px #ccc;
+    transition: border 0.2s ease;
+}
+
+.login-container .login-form #form input:focus{
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+.login-container .login-form #form .password.active  {
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+.login-container .login-form #form .password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0.25rem;
+
+    background: var(--search-bg);
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border-radius: 8px;
+    border: solid 1px #ccc;
+    transition: border 0.2s ease;
+}
+
+.login-container .login-form #form .password input{
+    font-size: 1rem;
+    color: var(--text-color);
+    background: none;
+    width: 100%;
+    padding: 0rem;
+    outline: none;
+    border-radius: 0rem;
+    border: none;
+}
+
+.login-container .login-form #form .password input:focus {
+    border: none;
+}
+
+.login-container .login-form #form .password i {
+    color: var(--text-color-secondary);
+    cursor: pointer;
+}
+
+.login-container .login-form #form button {
+    width: 100%;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.login-container .login-form #form #login {
+    background-color: var(--Nav-Bar-1);
+    color: #ffffff;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.login-container .login-form #form #login:hover {
+    background: var(--nav-bar-1-hover);
+}
+
+.login-container .login-form #form #g-login {
+    background-color: var(--search-bg);
+    color: var(--text-color);
+    border: solid 1px #ccc;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.login-container .login-form #form #g-login:hover {
+    background: var(--card-btn);
+}
+
+.login-container .login-form #form a {
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+    transition: color 0.2s ease;
+}
+
+.login-container .login-form #form a:hover {
+    color: var(--hover-color);
+}
+
+.login-container .login-form p strong{
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+.login-container .login-form p a {
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    color: hsl(209, 99%, 40%);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.login-container .login-form p  a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+
+/* Responsive Design Start */
+/* Tablet View */
+@media (max-width:768px){
+    .login-container {
+        flex-direction: column;
+        row-gap: 1rem;
+
+    }
+    
+    .login-container .content {
+        flex: none;
+        row-gap: 0.5rem;
+    }
+
+    .login-container .content .text-container {
+        align-items: center;
+    }
+
+    .login-container .login-form {
+        flex: none;
+        width: 100%;
+    }
+
+    .login-container .content .text-container .text  {
+        display: none;
+
+    }
+}

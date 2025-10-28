@@ -1,0 +1,5 @@
+# Stop directory listing (folder list donot show)
+Options -Indexes
+
+# Block all direct access from browser
+Deny from all

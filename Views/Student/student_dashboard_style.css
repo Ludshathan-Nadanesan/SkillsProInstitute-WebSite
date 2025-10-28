@@ -1,0 +1,993 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap'); */
+
+:root {
+    --font-family: "Inter", sans-serif;
+    /* --font-family: "Comfortaa", sans-serif; */
+    --logo-font: "Russo One", sans-serif;
+    --bg-color: hsl(0, 0%, 93%);
+    --Nav-Bar-1: #124c87;
+    --Nav-Bar-1-Grade: radial-gradient(circle,rgba(18, 76, 135, 1) 0%, rgba(0, 39, 74, 1) 100%);
+    --Nav-Bar-2: #ffffff;
+    --text-color: black;
+    --text-color-secondary: hsl(0, 0%, 30%);
+    --hover-color: #3fa1fe;
+    --focus-color-buttons: rgba(62, 161, 254, 0.5);
+    --hover-color-secondary: hsl(0, 0%, 90%);
+    --search-bg: hsl(0, 0%, 98%);
+    --card-color: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    --card-hover: white;
+    --card-btn: hsl(0, 0%, 90%);
+    --border: #ccc;
+    --zebra-table: rgba(0,0,0,0.04);
+}
+
+/* Dark Theme Color Settings */
+body.dark {
+    --bg-color: hsl(0, 0%, 7%);
+    --text-color: white;
+    --text-color-secondary: hsl(0, 0%, 70%);
+    --Nav-Bar-2: hsl(0, 0%, 10%);
+    --card-color: linear-gradient(180deg,rgba(30, 30, 30, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --card-hover: linear-gradient(180deg,rgb(40, 40, 40, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --search-bg: hsl(0, 0%, 12%);
+    --card-btn: hsl(0, 0%, 20%);
+    --hover-color-secondary: hsl(0, 0%, 15%);
+    --border: #555;
+    --focus-color-buttons: rgba(62, 161, 254, 0.2);
+    --zebra-table: rgba(255,255,255,0.02);
+}
+
+
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 60px 1fr;
+    height: 100vh;
+}
+
+
+/* Header Start */
+.header {
+    grid-area: header;
+    background: var(--Nav-Bar-2);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    column-gap: 1rem;
+    border-bottom: solid 1px var(--border);
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-family: var(--logo-font);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+}
+
+.header h1:hover {
+    color: var(--hover-color);
+}
+
+.header .header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.header-nav #theme-icon {
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.header-nav #theme-icon:hover {
+    color: var(--hover-color);
+}
+
+.header-nav .profile-mini {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header-nav .profile-mini img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;   /* circle image */
+    border: 2px solid #aaa;
+    object-fit: cover;
+}
+
+
+.header-nav .profile-mini .profile-settings {
+    display: none;
+    position: absolute;
+    top: 60px;    /* below the image */
+    right: 0;
+    background: var(--Nav-Bar-2);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    padding: 0.75rem 0.5rem;
+    min-width: 150px;
+    z-index: 10;
+}
+
+.header-nav .profile-mini .profile-settings.active {
+    display: block;
+}
+
+.header-nav .profile-mini .profile-settings a,
+.header-nav .profile-mini .profile-settings button {
+    display: block;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: var(--font-family);
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+
+.header-nav .profile-mini .profile-settings a:hover,
+.header-nav .profile-mini .profile-settings button:hover {
+    background: var(--hover-color-secondary);
+}
+
+/* Hamburger Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+/* Header ENd */
+
+
+
+/* Sidebar Start */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--Nav-Bar-2);
+    color: var(--text-color);
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    border-right: solid 1px var(--border);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 0.75rem;
+}
+
+.sidebar button {
+    color: var(--text-color);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    width: 100%;
+    text-align: left;
+    background: none;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background: var(--hover-color-secondary);
+}
+
+.sidebar button.active {
+    background: var(--focus-color-buttons);
+}
+
+.sidebar ul .sub.active{
+    display: block;
+}
+
+.sidebar ul .sub {
+    display: none;
+}
+
+.sidebar ul .sub li {
+    margin: 0.25rem 0;
+}
+
+.sidebar ul .sub li button{
+    padding: 8px 0px 8px 30px;
+    font-size: 0.95rem;
+}
+
+        /* Scrollbar track */
+.sidebar::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.sidebar::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+/* Side bar ENd */
+
+
+
+/* Main Section Start*/
+.main {
+    grid-area: main;
+    background: var(--bg-color);
+    padding: 2rem;
+    overflow-y: auto;
+    color: var(--text-color);
+}
+
+/* Scrollbar track */
+.main::-webkit-scrollbar {
+    width: 0.5rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main > div {
+    display: none; /* hide all sections by default */
+    width: 100%;
+    height: auto;
+}
+
+.main > div.active {
+    display: flex; /* show only the active section */
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    background: var(--card-color);
+    border-radius: 1rem;
+}
+
+
+
+            /* Dashboard Section */
+.main .dashboard.active {
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.main .dashboard.active .card {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--card-color);
+    border-top: solid 1px var(--border);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    transition: background 0.2s ease;
+}
+
+.main .dashboard.active .card:hover {
+    background: var(--card-hover);
+}
+
+
+
+
+            /* Profile Section */
+.main .profile.active {
+    flex-direction: column;
+    row-gap: 5rem;
+    max-width: 700px;
+    width: 100%;
+}
+
+.main .profile.active form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.main .profile.active form .student-profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.main .profile.active .student-profile-picture-container img {
+    width: 170px;
+    height: auto;
+    border: solid 1px white;
+    border-radius: 1rem;
+}
+
+.main .profile.active .student-profile-picture-container label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .profile.active form .student-profile-picture-container input[type="file"] {
+    display: none;
+}
+
+.main .profile.active .student-profile-picture-container .custom-file-upload {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+    color: var(--text-color);
+    background: var(--card-color);
+    transition: border 0.2s ease;
+    text-align: center;
+    display: none;
+}
+
+.main .profile.active .student-profile-picture-container .custom-file-upload.active
+{
+    display: inline-block;
+}
+
+.main .profile.active .student-profile-picture-container .custom-file-upload:hover {
+    border: 1px solid var(--hover-color);
+}
+
+.main .profile.active .form-group {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.25rem;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box; /* include padding inside width */
+}
+
+.main .profile.active .form-group label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+    width: 23%;
+}
+
+.main .profile.active .form-group input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 77%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .profile.active input:focus {
+    border-color: var(--hover-color);
+}
+
+                /* Dropdown list in profile section */
+            /* Drop down list */
+.main .profile.active .form-group .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 77%;
+    display: none;
+}
+
+.main .profile.active .form-group .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .profile.active .form-group .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .profile.active .form-group .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .profile.active .form-group .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .profile.active .form-group .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .profile.active .form-group .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .profile.active .form-group .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .profile.active .form-group .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .profile.active .form-group .dropdown .dropdown-options li {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .profile.active .form-group .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+
+.main .profile.active form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.main .profile.active form button:hover {
+    border-color: var(--hover-color);
+}
+
+.main .profile.active form #save-changes {
+    display: none;
+    color: white;
+    background: var(--Nav-Bar-1);
+    width: 100%;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    padding: 0.5rem 1em;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.main .profile.active form #edit-details {
+    display: block;
+    color: var(--text-color);
+    background: var(--search-bg);
+}
+
+.main .profile.active form .password-change {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+}
+
+.main .profile.active .password-change h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+}
+
+.main .profile.active .password-change button {
+    color: white;
+    background: var(--Nav-Bar-1);
+    border: solid 1px transparent;
+    width: 100%; 
+}
+
+.main .profile.active .password-change .form-group button:hover {
+    border-color: var(--text-color);
+}
+
+.main .profile.active .password-change .form-group {
+    position: relative;
+}
+
+.main .profile.active .password-change .form-group .toggle-password {
+    position: absolute;
+    top: 29%;
+    right: 2%;
+    cursor: pointer;
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .profile.active .password-change .form-group input::-ms-reveal {
+    display: none;
+}
+
+.main .profile.active .password-change #strength-indicator {
+    height: 8px;
+    width: 100%;
+    border-radius: 5px;
+    background: none;
+}
+
+
+/* Pending Courses Section */
+.main .pending-course {
+    flex-direction: column;
+    row-gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    background: var(--search-bg);
+}
+
+.main > div h2{
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+    padding-bottom: 0.35rem;
+    display: inline-block;
+    border-bottom: 2px solid var(--Nav-Bar-1);
+}
+
+.main > div .table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    border: solid 1px var(--border);
+    background: var(--card-color);
+    height: 63vh;
+}
+
+.main > div .table-container table {
+    width: 100%;
+    /* height: 100%; */
+}
+
+/* Keep header visible when scrolling */
+.main > div .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.main > div .table-container table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main > div .table-container table th, 
+.main > div .table-container table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+.main > div .table-container table th:nth-child(1), .main > div .table-container table td:nth-child(1) {
+    border-left: solid 1px var(--border);
+}
+
+
+/* vertical table */
+.main > div .ver-tab-conta {
+    max-height: 63vh;          /* vertical scroll if content is long */
+    overflow: auto;            /* shorthand for x & y scrolling */
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--card-color);
+    padding: 0.5rem;           /* optional, for spacing inside container */
+    width: 100%;               /* responsive width */
+    box-sizing: border-box;    /* includes padding in width */
+}
+
+.ver-tab-conta table {
+    width: 100%;               /* table fills container */
+    border-collapse: collapse; /* clean borders if added later */
+}
+
+.ver-tab-conta th,
+.ver-tab-conta td {
+    text-align: left;          /* left-align text */
+    padding: 0.5rem;           /* spacing inside cells */
+    vertical-align: top;       /* align content properly */
+}
+
+.ver-tab-conta tr:nth-child(even) {
+    background: var(--zebra-table); /* optional: zebra rows for readability */
+}
+/* Main Section ENd */
+
+
+/* current course section */
+.main .current-course h3 {
+    font-size: 1.25rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.main .current-course p {
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+    font-weight: 400;
+}
+
+.main .current-course .btn-enroll {
+    padding: 0.5rem 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0.5rem;
+}
+/* current course section end */
+
+
+
+/* time table section start */
+.time-table .table-container table thead th {
+    border-bottom: 1px solid var(--border);
+}
+
+.time-table .table-container table tbody td {
+    border-top: none;
+    border-bottom: none;
+}
+
+.time-table .table-container table tbody tr:nth-child(even) {
+    background: var(--zebra-table); /* optional: zebra rows for readability */
+}
+
+.time-table #downloadTimeTablePDF {
+    background: var(--Nav-Bar-1);
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* time table section end */
+
+
+
+/* Notice Section Start */
+.notice-card {
+    background: var(--card-hover);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--Nav-Bar-1); /* green left border */
+    padding: 15px 20px;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: var(--font-family);
+}
+
+.notice-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.notice-card h3 {
+    margin: 0 0 10px;
+    color: var(--text-color); /* green title */
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.notice-card p {
+    margin: 4px 0;
+    color: var(--text-color-secondary);
+    font-size: 0.95rem;
+}
+
+/* Special highlight for date rows */
+.notice-card p:last-child {
+    font-size: 0.85rem;
+    color: var(--text-color-secondary);
+    font-style: italic;
+}
+/* Notice Section end */
+
+
+/* EVnets section start */
+.event-card {
+    display: flex;
+    background: var(--card-hover);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--Nav-Bar-1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    font-family: var(--font-family);
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.event-image img {
+    width: 180px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-details {
+    padding: 15px 20px;
+    flex: 1;
+}
+
+.event-details h3 {
+    margin: 0 0 8px;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.event-desc {
+    margin: 0 0 10px;
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.event-details p {
+    color: var(--text-color-secondary);
+    margin-top: 4px;
+}
+
+.event-details strong {
+    font-weight: 500;
+}
+
+/* EVnets section end */
+
+
+/* Inquiry Section Start */
+.inquiries form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+    max-width: 700px;
+    width: 100%;
+}
+
+.inquiries form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.inquiries form textarea {
+    width: 100%;
+    outline: none;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: 1px solid transparent;
+    transition: border 0.2s ease;
+    resize: none;
+    height: 300px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.inquiries form textarea:focus {
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+.inquiries form button {
+    background: var(--Nav-Bar-1);
+    padding: 0.5rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Inquiry Section End */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-areas:
+        "header"
+        "main";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 240px;
+        height: calc(100% - 60px);
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+
+@media (max-width: 426px)
+{
+    .main .profile.active .form-group {
+        flex-direction: column;
+        row-gap: 0.25rem;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .main .profile.active .form-group input,
+    .main .profile.active .form-group label,
+    .main .profile.active .form-group .dropdown {
+        width: 100%;
+    }
+
+    .main .profile.active .password-change .form-group .toggle-password {
+        top: 57%;
+    }
+
+    .event-card {
+        flex-direction: column;
+    }
+
+    .event-card img {
+        width: 100%;
+    }
+    
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4552 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap'); */
+
+
+:root {
+    --font-family: "Inter", sans-serif;
+    /* --font-family: "Comfortaa", sans-serif; */
+    --logo-font: "Russo One", sans-serif;
+    --bg-color: hsl(0, 0%, 93%);
+    --Nav-Bar-1: #124c87;
+    --Nav-Bar-1-Grade: radial-gradient(circle,rgba(18, 76, 135, 1) 0%, rgba(0, 39, 74, 1) 100%);
+    --Nav-Bar-2: #ffffff;
+    --text-color: black;
+    --text-color-secondary: hsl(0, 0%, 30%);
+    --hover-color: #3fa1fe;
+    --focus-color-buttons: rgba(62, 161, 254, 0.5);
+    --hover-color-secondary: hsl(0, 0%, 90%);
+    --search-bg: hsl(0, 0%, 98%);
+    --card-color: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    --card-hover: white;
+    --card-btn: hsl(0, 0%, 90%);
+    --border: #ccc;
+}
+
+/* Dark Theme Color Settings */
+body.dark {
+    --bg-color: hsl(0, 0%, 7%);
+    --text-color: white;
+    --text-color-secondary: hsl(0, 0%, 70%);
+    --Nav-Bar-2: hsl(0, 0%, 10%);
+    --card-color: linear-gradient(180deg,rgba(30, 30, 30, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --card-hover: linear-gradient(180deg,rgb(40, 40, 40, 1) 0%, rgba(26, 26, 26, 1) 100%);
+    --search-bg: hsl(0, 0%, 12%);
+    --card-btn: hsl(0, 0%, 20%);
+    --hover-color-secondary: hsl(0, 0%, 15%);
+    --border: #555;
+    --focus-color-buttons: rgba(62, 161, 254, 0.2);
+}
+
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 60px 1fr;
+    height: 100vh;
+}
+
+/* Header Start */
+.header {
+    grid-area: header;
+    background: var(--Nav-Bar-2);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    column-gap: 1rem;
+    border-bottom: solid 1px var(--border);
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-family: var(--logo-font);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+}
+
+.header h1:hover {
+    color: var(--hover-color);
+}
+
+.header .header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.header-nav #theme-icon {
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.header-nav #theme-icon:hover {
+    color: var(--hover-color);
+}
+
+.header-nav .profile-mini {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header-nav .profile-mini img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;   /* circle image */
+    border: 2px solid #aaa;
+    object-fit: cover;
+}
+
+
+.header-nav .profile-mini .profile-settings {
+    display: none;
+    position: absolute;
+    top: 60px;    /* below the image */
+    right: 0;
+    background: var(--Nav-Bar-2);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    padding: 0.75rem 0.5rem;
+    min-width: 150px;
+    z-index: 10;
+}
+
+.header-nav .profile-mini .profile-settings.active {
+    display: block;
+}
+
+.header-nav .profile-mini .profile-settings a,
+.header-nav .profile-mini .profile-settings button {
+    display: block;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: var(--font-family);
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+
+.header-nav .profile-mini .profile-settings a:hover,
+.header-nav .profile-mini .profile-settings button:hover {
+    background: var(--hover-color-secondary);
+}
+
+/* Hamburger Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+/* Header ENd */
+
+
+
+/* Sidebar Start */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--Nav-Bar-2);
+    color: var(--text-color);
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    border-right: solid 1px var(--border);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 0.75rem;
+}
+
+.sidebar button span {
+    order: 2;
+}
+
+.sidebar button i {
+    color: var(--text-color-secondary);
+    order: 1;
+}
+
+.sidebar button {
+    color: var(--text-color);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    width: 100%;
+    text-align: left;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sidebar button:hover {
+    background: var(--hover-color-secondary);
+}
+
+.sidebar button.active {
+    background: var(--focus-color-buttons);
+}
+
+.sidebar ul .sub.active{
+    display: block;
+}
+
+.sidebar ul .sub {
+    display: none;
+}
+
+.sidebar ul .sub li {
+    margin: 0.25rem 0;
+}
+
+.sidebar ul .sub li button{
+    padding: 8px 0px 8px 30px;
+    font-size: 0.95rem;
+}
+
+        /* Scrollbar track */
+.sidebar::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.sidebar::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+/* Side bar ENd */
+
+
+
+/* Main Section Start*/
+.main {
+    grid-area: main;
+    background: var(--bg-color);
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    color: var(--text-color);
+}
+
+.main > div {
+    display: none; /* hide all sections by default */
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+}
+
+/* Scrollbar track */
+.main::-webkit-scrollbar {
+    width: 0.75rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main > div.active {
+    display: flex; /* show only the active section */
+}
+
+            /* Dashboard Section */
+.main .dashboard.active {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* Dashboard container */
+/* Rows */
+.dash-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* center items */
+}
+
+/* Cards */
+.card {
+    background: var(--card-color);
+    border-radius: 0.75rem;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    flex: 1 1 280px; /* flex-grow, flex-shrink, base width */
+    min-width: 280px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.card:hover {
+    background: var(--card-hover);
+}
+
+/* Chart size */
+.card canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/* Stat card text */
+#student-card strong,
+#instructor-card strong,
+#course-card strong {
+    font-size: 2rem;
+    color: var(--text-color-secondary);
+}
+
+/* Tablet responsive (768px-1024px) */
+@media (max-width: 1024px) {
+    .dash-row, .dsh-row {
+        justify-content: center;
+    }
+    .card {
+        flex: 1 1 45%; /* two per row if possible */
+    }
+}
+
+/* Mobile responsive (<768px) */
+@media (max-width: 768px) {
+    .dash-row, .dsh-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .card {
+        flex: 1 1 100%; /* full width */
+    }
+}
+
+
+
+
+
+
+/* Admin profile form for password edit/ change */
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 2rem;
+}
+
+.profile h2 {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.profile #change-password-form {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+}
+
+.profile .profile-item {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.profile .profile-item label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+}
+
+.profile .profile-item p {
+    margin: 0;
+    padding: 10px;
+    background: var(--search-bg);
+    border-radius: 0.5rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.profile .profile-item input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--search-bg);
+    border-radius: 0.5rem;
+    border: solid 1px transparent;
+    border-top: 1px solid var(--border);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.profile .profile-item .toggle-password {
+    position: absolute;
+    top: 57%;
+    right: 2%;
+    cursor: pointer;
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.profile .profile-item::-ms-reveal {
+    display: none;
+}
+
+.profile .profile-item input:focus {
+    border: solid 1px var(--hover-color);
+}
+
+.profile #strength-indicator {
+    height: 8px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    background: none;
+}
+
+.profile button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.profile #save-password {
+    background-color: hsl(122, 39%, 35%);
+    color: white;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    padding: 0.5rem;
+}
+
+.profile #logout {
+    background-color: hsl(4, 90%, 40%);
+    color: white;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    padding: 0.5rem;
+}
+
+
+/* Approve Students Section */
+.approve-students {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 1.5rem;
+}
+
+.approve-students h2 {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.approve-students p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0.5rem 0;
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 63vh;
+}
+
+/* Scrollbar track */
+.table-container::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+    height: 0.25rem;
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.table-container::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.table-container::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+/* Keep header visible when scrolling */
+.table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    background: var(--card-color);
+    border: none;
+    /* border-top: 1px solid var(--border); */
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
+}
+table th, table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    /* border-bottom: solid 1px var(--border); */
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+.approve-students table th:nth-child(9),
+.approve-students table td:nth-child(9) {
+    border-right: none;
+}
+
+.approve-students button {
+    padding: 0.325rem 0.75rem;
+    color: var(--text-color);
+    background-color: var(--card-btn);
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+    font-family: var(--font-family);
+    cursor: pointer;
+}
+
+.approve-students button:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+
+/* Add Courses Section */
+.main .add-course #add-course-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    max-width: 700px;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.main .add-course #add-course-form .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.25rem;
+    width: 100%;
+    column-gap: 1rem;
+}
+
+.main .add-course #add-course-form .form-group .dropdown {
+    flex: 1;
+    margin-top: 1.5rem;
+}
+
+.main .add-course #add-course-form .form-group-2 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.main .add-course #add-course-form h2 {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.main .add-course #add-course-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-course #add-course-form p  {
+    font-size: 0.825rem;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.main .add-course #add-course-form p:hover {
+    color: var(--hover-color);
+}
+
+.main .add-course #add-course-form input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .add-course #add-course-form input:focus {
+    border-color: var(--hover-color);
+}
+
+
+                    /* Drop down list */
+.main .add-course #add-course-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-course #add-course-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-course #add-course-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-course #add-course-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-course #add-course-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-course #add-course-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-course #add-course-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-course #add-course-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-course #add-course-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-course #add-course-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-course #add-course-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-course #add-course-form #about-course {
+    padding: 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+    resize: none;
+    height: 100px;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+}
+
+        /* Scrollbar track */
+.main .add-course #add-course-form #about-course::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-course #add-course-form #about-course::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-course #add-course-form #about-course::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-course #add-course-form h3 {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color:var(--text-color-secondary);
+    font-weight: 400;
+}
+
+.main .add-course #add-course-form .form-select-branch-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    padding-left: 1rem;
+    flex-wrap: wrap;
+}
+
+.main .add-course #add-course-form .form-select-branch-group label {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+}
+
+.main .add-course #add-course-form #about-course:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-course #add-course-form .course-img-container {
+    border: solid 1px var(--border);
+    outline: none;
+    background: var(--search-bg);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.main .add-course #add-course-form .course-img-container #course-img-preview {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: none;
+    display: none;
+}
+
+.main .add-course #add-course-form .course-img-container #course-img-upload {
+    max-width: 250px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.main .add-course #add-course-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Manage course section */
+
+.manage-courses {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-courses .table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    border: solid 1px var(--border);
+    background: var(--card-color);
+    height: 63vh;
+}
+
+.main .manage-courses .table-container table {
+    width: 100%;
+    height: auto;
+}
+
+/* Keep header visible when scrolling */
+.main .manage-courses .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.main .manage-courses table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main .manage-coursestable table th, .main .manage-coursestable table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    /* border-bottom: solid 1px var(--border); */
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+
+                    /* Drop down list */
+.main .manage-courses .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-courses .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-courses .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-courses .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-courses .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-courses .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-courses .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-courses .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-courses .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-courses .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-courses .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-courses .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-courses .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .manage-courses .filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main .manage-courses h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+/* edit course section */
+.main .manage-courses .edit-popup {
+    display: none;
+    background: var(--card-hover);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: absolute;
+    z-index: 10;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+.main .edit-popup .head-group {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.main .edit-popup .edit-popup-content .close-btn {
+    font-size: 1.75rem;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.main .edit-popup .edit-popup-content h3 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .edit-popup .edit-popup-content,
+.main .edit-popup #edit-course-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+ /* Drop down list */
+.main .edit-popup #edit-course-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .edit-popup #edit-course-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .edit-popup #edit-course-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .edit-popup #edit-course-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .edit-popup #edit-course-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .edit-popup #edit-course-form input,
+.main .edit-popup #edit-course-form textarea {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .edit-popup #edit-course-form input:focus,
+.main .edit-popup #edit-course-form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+
+
+.main .edit-popup #edit-course-form .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.25rem;
+    width: 100%;
+    column-gap: 1rem;
+}
+
+.main .edit-popup #edit-course-form .form-group .dropdown {
+    flex: 1;
+    margin-top: 1.5rem;
+}
+
+.main .edit-popup #edit-course-form .form-group-2 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+}
+
+
+.main .edit-popup #edit-course-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .edit-popup #edit-course-form p  {
+    font-size: 0.825rem;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.main .edit-popup #edit-course-form p:hover {
+    color: var(--hover-color);
+}
+
+.main .edit-popup #edit-course-form h3 {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color:var(--text-color-secondary);
+    font-weight: 400;
+}
+
+.main .edit-popup #edit-course-form .form-select-branch-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    padding-left: 1rem;
+    flex-wrap: wrap;
+}
+
+.main .edit-popup #edit-course-form .form-select-branch-group label {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+}
+.main .edit-popup #edit-course-form textarea {
+    resize: none;
+    font-family: var(--font-family);
+}
+
+.main .edit-popup #edit-course-form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+.main .edit-popup #edit-course-form .course-img-container {
+    border: solid 1px var(--border);
+    outline: none;
+    background: var(--search-bg);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.main .edit-popup #edit-course-form .course-img-container #course-img-preview {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.main .edit-popup #edit-course-form .course-img-container #course-img-upload {
+    max-width: 250px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.main .edit-popup #edit-course-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Add Instructor Form Section */
+.add-instructor {
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 700px;
+    width: 100%;
+}
+
+.main .add-instructor h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.main .add-instructor form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
+    width: 100%;
+}
+
+.main .add-instructor form input, 
+.main .add-instructor form textarea {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .add-instructor form textarea {
+    resize: none;
+}
+
+.main .add-instructor form input:focus,
+.main .add-instructor form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-instructor form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-instructor form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+.main .add-instructor form div {
+    width: 100%;
+}
+
+/* Drop down list */
+.main .add-instructor form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-instructor form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-instructor form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-instructor form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-instructor form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-instructor form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+.main .add-instructor form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-instructor form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-instructor form .instructor-password-group {
+    position: relative;
+}
+
+.main .add-instructor form .instructor-password-group #toggle-password {
+    position: absolute;
+    top: 55%;
+    right: 2%;
+    cursor: pointer;
+}
+
+.main .add-instructor form #instructor-password-indicator {
+    font-size: 0.9rem;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+
+/* manage instructor section */
+.manage-instructor {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-instructor .table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    border: solid 1px var(--border);
+    background: var(--card-color);
+    height: 63vh;
+}
+
+.main .manage-instructor .table-container table {
+    width: 100%;
+    height: auto;
+}
+
+/* Keep header visible when scrolling */
+.main .manage-instructor .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.main .manage-instructor table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main .instrutors-table table th, .main .instrutors-table table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    /* border-bottom: solid 1px var(--border); */
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+
+                    /* Drop down list */
+.main .manage-instructor .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 50%;
+}
+
+.main .manage-instructor .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-instructor .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-instructor .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-instructor .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-instructor .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-instructor .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-instructor .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-courses .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-instructor .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-instructor .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-instructor .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-instructor .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .manage-instructor .filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main .manage-instructor  h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+
+/* edit instructor section */
+.main .manage-instructor .edit-instructor-div {
+    display: none;
+    background: var(--card-hover);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: absolute;
+    z-index: 10;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+.main .manage-instructor .edit-instructor-div .head-group {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.main .manage-instructor .edit-instructor-div .close-btn {
+    font-size: 1.75rem;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.main .manage-instructor .edit-instructor-div h3 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+ /* Drop down list */
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form input,
+.main .manage-instructor .edit-instructor-div #edit-instructor-form textarea {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form input:focus,
+.main .manage-instructor .edit-instructor-div #edit-instructor-form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form p:hover {
+    color: var(--hover-color);
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form h3 {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color:var(--text-color-secondary);
+    font-weight: 400;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form textarea {
+    resize: none;
+    font-family: var(--font-family);
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    column-gap: 0.5rem;
+}
+
+.main .manage-instructor .edit-instructor-div #edit-instructor-form .form-group-2 {
+    flex: 1;
+}
+
+
+/* Add Course Modules Section */
+.add-modules {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;
+}
+
+.main .add-modules {
+    padding: 2rem;
+}
+
+.main .add-modules h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .add-modules #add-course-modules {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .add-modules #add-course-modules .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-modules #add-course-modules .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-modules #add-course-modules .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-modules #add-course-modules .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-modules #add-course-modules .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-modules #add-course-modules .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-modules #add-course-modules .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-modules #add-course-modules .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-modules #add-course-modules .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-modules #add-course-modules .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-modules #add-course-modules .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-modules #add-course-modules input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .add-modules #add-course-modules input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-modules #add-course-modules label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-modules #add-course-modules button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Assign instructors to module section */
+.assign-instructor-to-modules {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .assign-instructor-to-modules {
+    padding: 2rem;
+}
+
+.main .assign-instructor-to-modules h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .assign-instructor-to-modules #assign-instructor-to-module-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Manage course module section */
+.manage-modules {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-modules h2 {
+     font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-modules .table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    border: solid 1px var(--border);
+    background: var(--card-color);
+    height: 63vh;
+}
+
+.main .manage-modules .table-container table {
+    width: 100%;
+    height: auto;
+}
+
+/* Keep header visible when scrolling */
+.main .manage-modules .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.main .manage-modules table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main .manage-modules table th, .main .manage-modules table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    /* border-bottom: solid 1px var(--border); */
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+.main .manage-modules .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-modules .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-modules .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-modules .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-modules .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-modules .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-modules .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-modules .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-modules .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-modules .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-modules .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-modules .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-modules .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-modules .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+/* Create Batches section */
+.create-batches {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .create-batches {
+    padding: 2rem;
+}
+
+.main .create-batches h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .create-batches #create-batch-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .create-batches #create-batch-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .create-batches #create-batch-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .create-batches #create-batch-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .create-batches #create-batch-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .create-batches #create-batch-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .create-batches #create-batch-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .create-batches #create-batch-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .create-batches #create-batch-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .create-batches #create-batch-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .create-batches #create-batch-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .create-batches #create-batch-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .create-batches #create-batch-form input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .create-batches #create-batch-form input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .create-batches #create-batch-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .create-batches #create-batch-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Add Stduent to Batches Section */
+.add-student-to-batch {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .add-student-to-batch {
+    padding: 2rem;
+}
+
+.main .add-student-to-batch h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-student-to-batch #add-student-to-batch-form input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-student-to-batch #add-student-to-batch-form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-student-to-batch #add-student-to-batch-form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Manage student batches Section */
+.manage-batches {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-batches h2 {
+     font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-batches .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-batches .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-batches .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-batches .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-batches .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-batches .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-batches .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-batches .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-batches .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-batches .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-batches .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-batches .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-batches .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-batches .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .manage-batches .table-container button {
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+/* view student section */
+.main .manage-batches .view-students-batches {
+    /* display: flex; */
+    flex-direction: column;
+    row-gap: 1rem;
+    background: var(--card-hover);
+    border: solid 2px var(--border);
+    position: absolute;
+    z-index: 10;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;
+}
+
+.main .manage-batches .view-students-batches h2 {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+}
+
+.main .manage-batches .view-students-batches .panel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.main .manage-batches .view-students-batches .panel-header button {
+    background-color: var(--border);
+    color: var(--text-color);
+    padding: 6px 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
+
+.main .manage-batches .view-students-batches .delete-student {
+    color: white;
+    background-color: red;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* edit batch section */
+.main .manage-batches .edit-batch-name-status {
+    flex-direction: column;
+    row-gap: 1rem;
+    background: var(--card-hover);
+    border: solid 2px var(--border);
+    position: absolute;
+    z-index: 10;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+.main .manage-batches .edit-batch-name-status h2 {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+}
+
+.main .manage-batches .edit-batch-name-status .panel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.main .manage-batches .edit-batch-name-status .panel-header button {
+    background-color: var(--border);
+    color: var(--text-color);
+    padding: 6px 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
+
+.main .manage-batches .edit-batch-name-status input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-batches .edit-batch-name-status form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+                    /* Drop down list */
+.main .manage-batches .edit-batch-name-status .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-batches .edit-batch-name-status .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-batches .edit-batch-name-status input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .manage-batches .edit-batch-name-status label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .manage-batches .edit-batch-name-status #save-edit-batch {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+/* Manage Student Section */
+.manage-students {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-students h2 {
+     font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-students .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-students .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-students .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-students .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-students .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-students .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-students .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-students .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-students .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-students .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-students .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-students .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-students .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-students .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+
+/* Non Student Queries section */
+.non-students-queries {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .non-students-queries .filters {
+    max-width: 320px;
+    width: 100%;
+}
+        /* Drop down list */
+.main .non-students-queries .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .non-students-queries .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .non-students-queries .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .non-students-queries .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .non-students-queries .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .non-students-queries .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .non-students-queries .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .non-students-queries .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-courses .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .non-students-queries .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .non-students-queries .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .non-students-queries .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .non-students-queries .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .non-students-queries .filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main .non-students-queries  h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+
+/* Stduent Queries Section */
+
+/* Non Student Queries section */
+.students-queries {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .students-queries .filters {
+    max-width: 320px;
+    width: 100%;
+}
+        /* Drop down list */
+.main .students-queries .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .students-queries .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .students-queries .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .students-queries .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .students-queries .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .students-queries .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+.main .students-queries .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .students-queries .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .students-queries .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .students-queries .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .students-queries .filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.main .students-queries  h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+
+/* Add Time Table Section */
+.add-new-schedule {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .add-new-schedule {
+    padding: 2rem;
+}
+
+.main .add-new-schedule h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .add-new-schedule form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .add-new-schedule form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-new-schedule form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-new-schedule form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-new-schedule form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-new-schedule form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-new-schedule form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-new-schedule form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-new-schedule form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-new-schedule form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-new-schedule form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-new-schedule form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-new-schedule form input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .add-new-schedule form input:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-new-schedule form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-new-schedule form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+
+/* Manage TimeTable Section */
+.manage-timetable {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-timetable h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-timetable .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-timetable .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-timetable .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-timetable .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-timetable .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-timetable .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-timetable .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-timetable .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-timetable .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-timetable .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-timetable .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-timetable .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-timetable .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-timetable .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+/* Add Notice Section */
+.add-notice {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .add-notice {
+    padding: 2rem;
+}
+
+.main .add-notice h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .add-notice form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .add-notice form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-notice form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-notice form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-notice form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-notice form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-notice form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-notice form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-notice form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-notice form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-notice form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-notice form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-notice form input,
+.main .add-notice form textarea {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+    resize: none;
+}
+
+.main .add-notice form input:focus,
+.main .add-notice form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-notice form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-notice form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+
+/* Manage Notices Section */
+.manage-notices {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-notices h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-notices .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-notices .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-notices .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-notices .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-notices .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-notices .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-notices .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-notices .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-notices .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-notices .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-notices .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-notices .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-notices .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-notices .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+
+/* Add Event Section */
+.add-event {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    max-width: 700px;
+    width: 100%;   
+}
+
+.main .add-event {
+    padding: 2rem;
+}
+
+.main .add-event h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;
+}
+
+.main .add-event form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 0.5rem;
+}
+
+.main .add-event form .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .add-event form .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .add-event form .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .add-event form .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .add-event form .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .add-event form .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .add-event form .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .add-event form .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .add-event form .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .add-event form .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .add-event form .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .add-event form input,
+.main .add-event form textarea {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+    resize: none;
+}
+
+.main .add-event form input:focus,
+.main .add-event form textarea:focus {
+    border-color: var(--hover-color);
+}
+
+.main .add-event form label {
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+}
+
+.main .add-event form button {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--border);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: var(--Nav-Bar-1);
+    color: white;
+}
+
+
+/* Manage Events Section */
+.manage-events {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .manage-events h2 {
+    font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .manage-events .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .manage-events .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .manage-events .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .manage-events .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .manage-events .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .manage-events .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .manage-events .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .manage-events .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .manage-events .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .manage-events .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .manage-events .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .manage-events .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .manage-events .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .manage-events .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+
+
+
+/* Student enrollments section */
+.student-enrollments {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box; /* include padding inside width */
+    background: var(--search-bg);
+    border-top: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.main .student-enrollments h2 {
+     font-family: var(--font-family);
+    font-size: 1.75rem;
+    color:var(--text-color);
+    font-weight: 500;   
+}
+
+.main .student-enrollments .table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    border: solid 1px var(--border);
+    background: var(--card-color);
+    height: 63vh;
+}
+
+.main .student-enrollments .table-container table {
+    width: 100%;
+    height: auto;
+}
+
+/* Keep header visible when scrolling */
+.main .student-enrollments .table-container thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.main .student-enrollments table {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main .student-enrollments table th, .main .student-enrollments table td {
+    font-family: var(--font-family);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    /* border-bottom: solid 1px var(--border); */
+    border-right: solid 1px var(--border);
+    border-top: solid 1px var(--border);
+}
+
+.main .student-enrollments .filters {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+                    /* Drop down list */
+.main .student-enrollments .filters .dropdown {
+    position: relative;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.main .student-enrollments .filters .dropdown .dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.313rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+
+.main .student-enrollments .filters .dropdown .dropdown-selected i {
+    transition: all 0.3s ease;
+}
+
+.main .student-enrollments .filters .dropdown .dropdown-selected.active {
+    border: solid 1px var(--Nav-Bar-1);
+} 
+
+.main .student-enrollments .filters .dropdown .dropdown-selected.active i{
+    transform: rotate(180deg);
+}
+
+.main .student-enrollments .filters .dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    background: var(--search-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0.313rem 0 0 0;
+    max-height: 9.375rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    width: 100%;
+    border: solid 1px var(--Nav-Bar-1);
+}
+
+        /* Scrollbar track */
+.main .student-enrollments .filters .dropdown .dropdown-options::-webkit-scrollbar {
+    width: 0.25rem; /* width of vertical scrollbar */
+}
+
+        /* Scrollbar thumb (the draggable part) */
+.main .student-enrollments .filters .dropdown .dropdown-options::-webkit-scrollbar-thumb {
+    background-color: hsl(209, 99%, 40%); /* your color */
+    border-radius: 0.5rem; /* rounded corners */
+}
+
+        /* Scrollbar track (background) */
+.main .student-enrollments .filters .dropdown .dropdown-options::-webkit-scrollbar-track {
+    background: var(--hover-color-secondary); /* or any color you like */
+}
+
+.main .student-enrollments .filters .dropdown .dropdown-options li {
+    padding: 10px 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+}
+
+.main .student-enrollments .filters .dropdown .dropdown-options li:hover {
+    color: white;
+    background: var(--Nav-Bar-1);
+}
+
+.main .student-enrollments .filters input {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    background: var(--search-bg);
+    border: solid 1px var(--border);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    transition: border 0.2s ease;
+    text-align: left;
+}
+
+.main .student-enrollments .filters input:focus {
+    border-color: var(--hover-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main Section ENd */
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-areas:
+        "header"
+        "main";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 240px;
+        height: calc(100% - 60px);
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* .dashboard {
+        flex-direction: column;
+    } */
+
+    .main .manage-courses .filters {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:500px) {
+    .main div.active .filters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+    } 
+
+    .main div.active .filters .dropdown{
+        width: 100%;
+    }
+}
