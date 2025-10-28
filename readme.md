@@ -86,7 +86,6 @@ The platform allows users to:
 
 ## 🧰 Tech Stack & Tools
 
-|---------------------------------------------|
 | Layer      |  Technology / Library          |
 |------------|--------------------------------|
 | Frontend   | HTML, CSS, JavaScript          |
@@ -94,7 +93,6 @@ The platform allows users to:
 | Database   | MySQL                          |
 | Emails     | PHPMailer                      |
 | AI Chatbot | OpenRouter AI (Free model)     |
-|---------------------------------------------|
 
 ---
 
@@ -113,24 +111,24 @@ The platform allows users to:
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
-![Home Page](demo/screenshots/homepagefull.png)
+![Home Page](screenshots/homepagefull.png)
 
 ### 🤖 AI Chatbot (Sam AI)
-![Chatbot](demo/screenshots/chatbot.png)
+![Chatbot](screenshots/chatbot.png)
 
 ### 🎓 Login Portal
-![Login Portal](demo/screenshots/login.png)
+![Login Portal](screenshots/login.png)
 
 ### 🎓 Resgister Student Account
-![Register](demo/screenshots/register.png)
+![Register](screenshots/register.png)
 
 ### 🎓 Student Dashboard
-![Student Dashboard](demo/screenshots/student-dashboard.png)
+![Student Dashboard](screenshots/student-dashboard.png)
 
 ### 👨‍🏫 Instructor Dashboard
-![Instructor Dashboard](demo/screenshots/instructor-dashboard.png)
+![Instructor Dashboard](screenshots/instructor-dashboard.png)
 
 ### 🛠 Admin Dashboard
-![Admin Dashboard](demo/screenshots/admin-dashboard.png)
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
 ---
