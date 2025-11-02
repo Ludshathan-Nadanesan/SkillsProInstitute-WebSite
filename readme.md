@@ -132,3 +132,9 @@ The platform allows users to:
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
 ---
+
+---
+
+[![Video](https://img.youtube.com/vi/yU_blb2Gy74/maxresdefault.jpg)](https://www.youtube.com/watch?v=yU_blb2Gy74)
+
+---
